@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,21 +20,21 @@
 .container {
     position: relative;
     z-index: 1;
-    padding: 20px 40px; /* Ajusta el espacio vertical y horizontal del contenedor */
+    padding: 20px 40px; 
     border-radius: 10px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
     max-width: 1000px;
-    margin: 130px auto 0; /* Centra el contenedor verticalmente */
+    margin: 130px auto 0;
 }
 
 .btn-login,
 .btn-register {
-    background-color: #fe2954; /* Red */
-    border-color: #FF6961; /* Red */
-    color: #fff; /* White */
+    background-color: #fe2954; 
+    border-color: #FF6961; 
+    color: #fff; 
     transition: background-color 0.3s, border-color 0.3s, color 0.3s;
-    height: 500px; /* Ajusta la altura de los botones */
+    height: 500px; 
     position: relative;
     overflow: hidden;
     display: flex;
