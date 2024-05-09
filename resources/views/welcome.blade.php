@@ -11,14 +11,22 @@
 
     <style>
     
-
+    body {
+            background-image: url('/images/RL.jpg'); 
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+        }
+ 
 .container {
     position: relative;
     z-index: 1;
-    padding: 20px;
+    padding: 20px 40px; /* Ajusta el espacio vertical y horizontal del contenedor */
     border-radius: 10px;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.8);
+    max-width: 1000px;
+    margin: 130px auto 0; /* Centra el contenedor verticalmente */
 }
 
 .btn-login,
@@ -47,6 +55,7 @@
     display: block;
     font-size: 0.8em;
     margin-bottom: 150px;
+    
     position:absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -75,21 +84,19 @@
 
 
 
-<body style="background-image: url('public/images/RL.jpg')">
+<body>
     
-    <div class="container py-5 rounded bg-white">
+    <div class="container container-fluid mx-auto rounded shadow p-4 bg-white;" >
         <h1 class="display-4">Bienvenido!</h1>
         <p class="lead">por favor para ingresar seleccione una de las siguientes opciones.</p>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" >
             <div class="col-md-4">
-                <a href="{{ route('login') }}" class="btn btn-login btn-lg w-100 mb-3" data-description="Entrar con una cuenta existente de egresado"><h1>Iniciar Sesión</h1></a>
+                <a href="{{ route('login') }}" class="btn btn-login btn-lg w-100 mb-3" data-description="Entrar con una cuenta de egresado existente"><h1>Iniciar Sesión</h1></a>
             </div>
             <div class="col-md-4">
                 <a href="{{ route('register') }}" class="btn btn-register btn-lg w-100" data-description="Crear una nueva cuenta de egresado"><h1>Registrarse</h1></a>
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.4.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
