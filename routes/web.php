@@ -27,4 +27,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('profile',[UsuarioController::class,'profile']);
+    Route::get('informacion-personal',[UsuarioController::class,'informacionpersonal']);
+    
 });
