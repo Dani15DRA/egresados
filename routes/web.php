@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Usuario\InfoPersonarUserController;
+use App\Http\Controllers\Usuario\DireccionUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('profile',[UsuarioController::class,'profile']);
+    Route::resource('informacion-personal', InfoPersonarUserController::class);
+    Route::resource('direccion', DireccionUserController::class);
+
 });

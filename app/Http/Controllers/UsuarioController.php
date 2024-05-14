@@ -11,4 +11,5 @@ class UsuarioController extends Controller
     {
         return view('profile');
     }
+
 }
