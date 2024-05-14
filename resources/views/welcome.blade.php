@@ -17,7 +17,7 @@
             height: 100vh;
         }
  
-.container {
+.containerc {
     position: relative;
     z-index: 1;
     padding: 20px 40px; 
@@ -85,9 +85,9 @@
 
 <body>
     
-    <div class="container container-fluid mx-auto rounded shadow p-4 bg-white;" >
-        <h1 class="display-4">Bienvenido!</h1>
-        <p class="lead">por favor para ingresar seleccione una de las siguientes opciones.</p>
+    <div class="containerc container-fluid mx-auto rounded shadow p-4 bg-white;" >
+        <h1 class="display-4">¡Bienvenido!</h1>
+        <p class="lead">Por favor, para ingresar seleccione una de las siguientes opciones:</p>
         <div class="row justify-content-center" >
             <div class="col-md-4">
                 <a href="{{ route('login') }}" class="btn btn-login btn-lg w-100 mb-3" data-description="Entrar con una cuenta de egresado existente"><h1>Iniciar Sesión</h1></a>
@@ -97,5 +97,8 @@
             </div>
         </div>
     </div>
+
+
 </body>
+
 </html>

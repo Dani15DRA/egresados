@@ -9,119 +9,122 @@
 @stop
 
 @section('content')
-<form>
-<!--Primera fila -->
-    <div class="form-row">
-            <div class="form-group col-md-4">
-            <label for="inputDoc">Tipo de documento</label>
-            <select id="inputDoc" class="form-control">
-                <option selected> </option>
-                <option>DNI</option>
-                <option>Carnet de extranjería</option>
-            </select>
+<style>
+    .formulario {
+        background-color: #f8f9fa;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 0px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .foto-perfil {
+        border-radius: 50%;
+        width: 182px;
+        height: 182px;
+        margin-bottom: 20px;
+        cursor: pointer; 
+        transition: filter 0.3s;
+    }
+    .foto-perfil:hover {
+        filter: brightness(70%); 
+    }
+
+    #input-imagen {
+        display: none;
+    }
+
+</style>
+
+<form class="formulario">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="tDocumento">Tipo de documento</label>
+                <select id="tDocumento" name="tDocumento" class="form-control">
+                    <option selected disabled>Seleccione</option>
+                    <option>DNI</option>
+                    <option>Carnet de extranjería</option>
+                </select>
             </div>
-            <div class="form-group col-md-5">
-                <label for="inputNDoc">Número de documento</label>
-                <input type="text" class="form-control" id="inputNDoc" placeholder="Número de documento">
+            <div class="form-group">
+                <label for="nDocumento">Número de documento</label>
+                <input type="text" id="nDocumento" name="nDocumento" class="form-control" placeholder="Número de documento">
             </div>
-    </div>
-<!-- Segunda fila -->
-    <div class="form-row">
-    <div class="form-group col-md-3">
-            <label for="inputNombres">Nombres</label>
-            <input type="text" class="form-control" id="inputNombres" placeholder="Nombres">
-        </div>        
-        <div class="form-group col-md-3">
-            <label for="inputAPaterno">Apellido Paterno</label>
-            <input type="text" class="form-control" id="inputAPaterno" placeholder="Apellido Paterno">
+            <div class="form-group">
+                <label for="nombres">Nombres</label>
+                <input type="text" id="nombres" name="nombres" class="form-control" placeholder="Nombres">
+            </div>
+            <div class="form-group">
+                <label for="aPaterno">Apellido Paterno</label>
+                <input type="text" id="aPaterno" name="aPaterno" class="form-control" placeholder="Apellido Paterno">
+            </div>
+            <div class="form-group">
+                <label for="aMaterno">Apellido Materno</label>
+                <input type="text" id="aMaterno" name="aMaterno" class="form-control" placeholder="Apellido Materno">
+            </div>
+            <div class="form-group">
+                <label for="origen">País de origen:</label>
+                <select id="origen" name="origen" class="form-control">
+                    <option selected disabled>Seleccione</option>
+                    <option>Perú</option>
+                    <option>Venezuela</option>
+                </select>
+            </div>
         </div>
-        <div class="form-group col-md-3">
-            <label for="inputAMaterno">Apellido Materno</label>
-            <input type="text" class="form-control" id="inputAMaterno" placeholder="Apellido Materno">
+        <div class="col-md-6">
+            <!-- Foto de perfil -->
+            <label >Seleccionar foto</label>
+            <div class="text-center">
+            <br>
+            <img src="https://via.placeholder.com/200" alt="Foto de perfil" class="foto-perfil" for="foto" id="imagen-usuario"><br>
+            </div>
+            <input type="file" id="input-imagen" name="imagen" accept="image/*">
+
+            <!-- Resto del formulario -->
+            <div class="form-group">
+                <label for="genero">Género</label>
+                <select id="genero" name="genero" class="form-control">
+                    <option selected disabled>Seleccione</option>
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eCivil">Estado civil</label>
+                <select id="eCivil" name="eCivil" class="form-control">
+                    <option selected disabled>Seleccione</option>
+                    <option>Casado</option>
+                    <option>Soltero</option>
+                    <option>Divorciado</option>
+                    <option>Viudo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nacimiento">Fecha de nacimiento</label>
+                <input type="date" id="nacimiento" name="nacimiento" class="form-control">
+            </div>
         </div>
     </div>
-<!--Tercera Fila-->
-    <div class="form-row">
-        <div class="form-group col-md-3">
-            <label for="inputGenero">Género</label>
-            <select id="inputGenero" class="form-control">
-                <option selected> </option>
-                <option>Masculino</option>
-                <option>Femenino</option>
-            </select>
-        </div>
-        <div class="form-group col-md-3">
-            <label for="inputECivil">Estado civil</label>
-            <select id="inputECivil" class="form-control">
-                <option selected> </option>
-                <option>Casado</option>
-                <option>Soltero</option>
-                <option>Divorciado</option>
-                <option>Viudo</option>
-            </select>
+    <div class="row justify-content-end">
+        <div class="col-md-6 text-right">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" class="btn btn-secondary">Cancelar</button>
         </div>
     </div>
-
-
-<!--Cuarta Fila-->
-    <div class="form-row">
-
-        <div class="form-group col-md-3">
-            <label for="inputECivil">Estado civil</label>
-            <select id="inputECivil" class="form-control">
-                <option selected> </option>
-                <option>Casado</option>
-                <option>Soltero</option>
-                <option>Divorciado</option>
-                <option>Viudo</option>
-            </select>
-        </div>
-    </div>
-
-
-
-
-
-
-
-  <div class="form-group">
-    <label for="inputNombres">Nombres</label>
-    <input type="text" class="form-control" id="inputNombres" placeholder="Nombres">
-  </div>
-  <div class="form-group">
-    <label for="inputAddress2">Address 2</label>
-    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-      <label for="inputCity">City</label>
-      <input type="text" class="form-control" id="inputCity">
-    </div>
-    <div class="form-group col-md-4">
-      <label for="inputState">State</label>
-      <select id="inputState" class="form-control">
-        <option selected>Choose...</option>
-        <option>...</option>
-      </select>
-    </div>
-    <div class="form-group col-md-1">
-      <label for="inputZip">Zip</label>
-      <input type="text" class="form-control" id="inputZip">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Sign in</button>
 </form>
-    
 
-  
+
+<script>
+    document.getElementById('input-imagen').addEventListener('change', function(e) {
+        var file = e.target.files[0];
+        var url = URL.createObjectURL(file);
+        document.getElementById('imagen-usuario').src = url;
+    });
+
+    document.getElementById('imagen-usuario').addEventListener('click', function() {
+        document.getElementById('input-imagen').click(); 
+    });
+</script>
 
 @stop
 
