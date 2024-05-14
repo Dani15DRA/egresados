@@ -69,7 +69,7 @@
                       <option selected>Elegir...</option>
                       <option>Calle</option>
                       <option>Avenida</option>
-                      <option>Urbanización</option>
+                      <option>Urbanizacion</option>
                     </select>
                   </div>
                   <div class="form-group col-md-4">

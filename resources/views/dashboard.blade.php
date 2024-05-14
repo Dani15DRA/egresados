@@ -41,8 +41,8 @@
                                     <input type="text" class="form-control" id="inputCorreo">
                                 </div>
                                 <div class="form-group col-md-12">
-                                    <label for="inputCel">Celular</label>
-                                    <input type="text" class="form-control" id="inputCel">
+                                    <label for="inputCelu">Celular</label>
+                                    <input type="text" class="form-control" id="inputCelu">
                                 </div>
                             </div>
                             <!-- Botones -->
