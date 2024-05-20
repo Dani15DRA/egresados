@@ -32,7 +32,6 @@
     #input-imagen {
         display: none;
     }
-
 </style>
 
 <form class="formulario">
@@ -73,10 +72,10 @@
         </div>
         <div class="col-md-6">
             <!-- Foto de perfil -->
-            <label >Seleccionar foto</label>
+            <label>Seleccionar foto</label>
             <div class="text-center">
-            <br>
-            <img src="https://via.placeholder.com/200" alt="Foto de perfil" class="foto-perfil" for="foto" id="imagen-usuario"><br>
+                <br>
+                <img src="https://via.placeholder.com/200" alt="Foto de perfil" class="foto-perfil" for="foto" id="imagen-usuario"><br>
             </div>
             <input type="file" id="input-imagen" name="imagen" accept="image/*">
 
@@ -87,6 +86,7 @@
                     <option selected disabled>Seleccione</option>
                     <option>Masculino</option>
                     <option>Femenino</option>
+                    <option>Prefiero no decirlo.</option>
                 </select>
             </div>
             <div class="form-group">
@@ -113,7 +113,6 @@
     </div>
 </form>
 
-
 <script>
     document.getElementById('input-imagen').addEventListener('change', function(e) {
         var file = e.target.files[0];
@@ -130,7 +129,6 @@
 
 @section('css')
     {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')
