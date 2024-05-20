@@ -47,7 +47,7 @@
 
         img {
             height: 40px;
-            margin-top: -120px;
+            margin-top: 5px;
             margin-bottom: 22px;
         }
 
