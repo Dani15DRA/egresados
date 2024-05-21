@@ -1,4 +1,8 @@
 @extends('adminlte::page')
+<<<<<<< HEAD
+=======
+@section('title', 'Egresado')
+>>>>>>> daniela
 
 @section('title', 'Dashboard')
 
