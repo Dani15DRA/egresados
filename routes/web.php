@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Usuario\InfoPersonarUserController;
+use App\Http\Controllers\Usuario\InfoPersonalUserController;
 use App\Http\Controllers\Usuario\DireccionUserController;
+use App\Http\Controllers\Usuario\ContactoUserController;
+use App\Http\Controllers\Usuario\InfoAcademicaUserController;
+use App\Http\Controllers\Usuario\ExperienciaLaboralUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +32,12 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
     Route::get('profile',[UsuarioController::class,'profile']);
-    Route::resource('informacion-personal', InfoPersonarUserController::class);
+    Route::resource('informacion-personal', InfoPersonalUserController::class);
     Route::resource('direccion', DireccionUserController::class);
+    Route::resource('contacto', ContactoUserController::class);
+    Route::resource('informacion-academica', InfoAcademicaUserController::class);
+    Route::resource('experiencia-laboral', ExperienciaLaboralUserController::class);
 
 });
+
+Route::resource('mantenimiento/promocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController');
