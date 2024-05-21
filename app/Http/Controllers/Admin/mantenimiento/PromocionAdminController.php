@@ -1,18 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Usuario;
+namespace App\Http\Controllers\Admin\mantenimiento;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InfoPersonalUserController extends Controller
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Str;
+use DataTables;
+use DB;
+class PromocionAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('informacion-personal');
+        if($request)
+        {
+            $query = trim($request->get('searchText'));
+            return view('mantenimiento.promocion.index',["searchText"=>$query]);
+        }
+        
     }
 
     /**

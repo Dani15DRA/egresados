@@ -297,7 +297,7 @@ return [
         // Navbar items:
         [
             'type' => 'navbar-search',
-            'text' => 'search',
+            'text' => 'Buscar',
             'topnav_right' => true,
         ],
         [
@@ -307,11 +307,7 @@ return [
 
         // Sidebar items:
 
-        [
-            'text' => 'blog',
-            'url' => 'admin/blog',
-            'can' => 'manage-blog',
-        ],
+        
 
         [
             'text' => 'Inicio',
@@ -319,67 +315,54 @@ return [
             'icon' => 'fas fa-fw fa-home'
         ],
 
-        [
-            'text' => 'pages',
-            'url' => 'admin/pages',
-            'icon' => 'far fa-fw fa-file',
-            'label' => 4,
-            'label_color' => 'success',
-        ],
+       
         ['header' => 'CONFIGURACIÓN DE EGRESADO'],
+        
+        
         [
-            'text' => 'Información personal',
-            'url' => 'informacion-personal',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Egresado',
+            'icon' => 'fas fa-fw fa-share',
+            'submenu' => [
+                [
+                    'text' => 'Información personal',
+                    'url' => 'informacion-personal',
+                    'icon' => 'fas fa-fw fa-user',
+                ],
+                [
+                    'text' => 'Dirección',
+                    'url' => 'direccion',
+                    'icon' => 'fas fa-map-marker-alt',
+                    
+                ],
+                [
+                    'text' => 'Contacto',
+                    'url' => 'contacto',
+                    'icon' => 'fas fa-address-book',
+                    
+                ],
+                [
+                    'text' => 'Información académica',
+                    'url' => 'informacion-academica',
+                    'icon' => 'fas fa-graduation-cap',
+                    
+                ],
+                [
+                    'text' => 'Experiencia laboral ',
+                    'url' => 'experiencia-laboral',
+                    'icon' => 'fas fa-briefcase',
+                    
+                ],
+                
+            ],
         ],
-        [
-            'text' => 'Dirección',
-            'url' => 'direccion',
-            'icon' => 'fas fa-fw fa-user',
-        ],
+
         [
             'text' => 'Configuración',
             'url' => 'profile',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
-            'text' => 'multilevel',
-            'icon' => 'fas fa-fw fa-share',
-            'submenu' => [
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                        ],
-                        [
-                            'text' => 'level_two',
-                            'url' => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                                [
-                                    'text' => 'level_three',
-                                    'url' => '#',
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'level_one',
-                    'url' => '#',
-                ],
-            ],
-        ],
+
+
         ['header' => 'labels'],
         [
             'text' => 'important',

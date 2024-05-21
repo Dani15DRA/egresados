@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Egresado')
 
 @section('content_header')
     <h1>Información personal</h1>
@@ -33,11 +33,25 @@
         display: none;
     }
 
+    /* Estilos para asegurar que el texto de Select2 sea negro */
+    .select2-container--default .select2-selection--multiple .select2-selection__choice,
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+        color: #000 !important;
+    }
+
+    .select2-container--default .select2-results__option {
+        color: #000;
+    }
+
+    .select2-container .select2-selection--single .select2-selection__rendered {
+        color: #000 !important;
+    }
 </style>
 
 <form class="formulario">
     <div class="row">
         <div class="col-md-6">
+            <!-- Otros campos del formulario -->
             <div class="form-group">
                 <label for="tDocumento">Tipo de documento</label>
                 <select id="tDocumento" name="tDocumento" class="form-control">
@@ -73,10 +87,10 @@
         </div>
         <div class="col-md-6">
             <!-- Foto de perfil -->
-            <label >Seleccionar foto</label>
+            <label>Seleccionar foto</label>
             <div class="text-center">
-            <br>
-            <img src="https://via.placeholder.com/200" alt="Foto de perfil" class="foto-perfil" for="foto" id="imagen-usuario"><br>
+                <br>
+                <img src="https://via.placeholder.com/200" alt="Foto de perfil" class="foto-perfil" for="foto" id="imagen-usuario"><br>
             </div>
             <input type="file" id="input-imagen" name="imagen" accept="image/*">
 
@@ -87,6 +101,7 @@
                     <option selected disabled>Seleccione</option>
                     <option>Masculino</option>
                     <option>Femenino</option>
+                    <option>Prefiero no decirlo.</option>
                 </select>
             </div>
             <div class="form-group">
@@ -103,6 +118,16 @@
                 <label for="nacimiento">Fecha de nacimiento</label>
                 <input type="date" id="nacimiento" name="nacimiento" class="form-control">
             </div>
+            <div class="form-group">
+                <label for="idiomas">Idiomas</label>
+                <select id="idiomas" name="idiomas[]" class="form-control" multiple="multiple">
+                    <option>Español</option>
+                    <option>Inglés</option>
+                    <option>Francés</option>
+                    <option>Alemán</option>
+                    <option>Italiano</option>
+                </select>
+            </div>
         </div>
     </div>
     <div class="row justify-content-end">
@@ -112,7 +137,6 @@
         </div>
     </div>
 </form>
-
 
 <script>
     document.getElementById('input-imagen').addEventListener('change', function(e) {
@@ -124,13 +148,19 @@
     document.getElementById('imagen-usuario').addEventListener('click', function() {
         document.getElementById('input-imagen').click(); 
     });
+
+    // Inicializar Select2 para el campo de idiomas
+    document.addEventListener('DOMContentLoaded', function() {
+        $('#idiomas').select2({
+            placeholder: 'Seleccione uno o más idiomas'
+        });
+    });
 </script>
 
 @stop
 
 @section('css')
     {{-- Add here extra stylesheets --}}
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

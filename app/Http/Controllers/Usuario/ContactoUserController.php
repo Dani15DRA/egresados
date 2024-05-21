@@ -5,14 +5,14 @@ namespace App\Http\Controllers\Usuario;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class InfoPersonalUserController extends Controller
+class ContactoUserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('informacion-personal');
+        return view('contacto');
     }
 
     /**
