@@ -28,7 +28,8 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-                        <a href="{{ URL::action('App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@index') }}"><button type="button" class="btn btn-primary btn-sm">Cancelar</button></a>
+                        <a href="{{ URL::action('App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@index') }}"><button type="button" class="btn btn-
+                        imary btn-sm">Cancelar</button></a>
                     </div>                        
                 </div>
                 {!! Form::close() !!}
