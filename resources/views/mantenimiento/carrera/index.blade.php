@@ -1,17 +1,17 @@
 @extends('adminlte::page')
-@section('title', 'Promoción')
+@section('title', 'Carrera')
 @section('content')
 
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 style="color: #333; font-weight: 700;">Promoción</h1>
+                <h1 style="color: #333; font-weight: 700;">Carrera</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#" style="color: #333;">Mantenimiento</a></li>
-                    <li class="breadcrumb-item active" style="color: #333;">Promoción</li>
+                    <li class="breadcrumb-item active" style="color: #333;">Carrera</li>
                 </ol>
             </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="col-md-12">
                 <div class="card card-outline" style="border-top: 3px solid #333;">
                     <div class="card-header">
-                        <h3 class="card-title" style="color: #333;">Buscar Promoción</h3>
+                        <h3 class="card-title" style="color: #333;">Buscar Carrera</h3>
                     </div>
                     <div class="card-body">
                         <form method="GET">
@@ -50,7 +50,7 @@
 
         <div class="row mb-3">
             <div class="col-lg-12">
-                <a href="promocion/create" class="btn btn-primary" style="background-color: cornflowerblue ; border-color: cornflowerblue;">
+                <a href="carrera/create" class="btn btn-primary" style="background-color: cornflowerblue ; border-color: cornflowerblue;">
                     <i class="fa fa-plus"></i> Nuevo
                 </a>
             </div>
@@ -122,23 +122,23 @@
                 url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/es_es.json"
             },
             ajax: {
-                url: "{{ url('/') }}/getPromocion",
+                url: "{{ url('/') }}/getCarrera",
                 data: function (d) {
                     d.searchText = $('input[name=searchText]').val();
                 }
             },
             columns: [
-                {data: 'PRO_NOMBRE', name: 'Descripcion'},
-                {data: 'PRO_ESTADO', name: 'Estado', className: 'text-center'},
+                {data: 'CAR_NOMBRE', name: 'Descripcion'},
+                {data: 'CAR_ESTADO', name: 'Estado', className: 'text-center'},
                 {data: 'Actions', name: 'Actions', orderable: false, searchable: false, className: 'text-center'},
             ]
         });
 
-        $('#tableListado').on('click', '.deletePromocion', function() {
+        $('#tableListado').on('click', '.deleteCarrera', function() {
             var id = $(this).data('id');
             $('#myModal').modal('show').on('click', '#btn_confirm', function(e) {
                 $.ajax({
-                    url: "{{ url('/') }}/delPromocion",
+                    url: "{{ url('/') }}/delCarrera",
                     type: 'post',
                     data: {_token: "{{ csrf_token() }}", id: id},
                     success: function(response) {

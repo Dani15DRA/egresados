@@ -44,3 +44,7 @@ Route::middleware([
 Route::resource('mantenimiento/promocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController');
 Route::get('getPromocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController@listarPromocion');
 Route::post('delPromocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController@eliminarPromocion');
+
+Route::resource('mantenimiento/carrera','App\Http\Controllers\Admin\mantenimiento\CarreraAdminController');
+Route::get('getCarrera','App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@listarCarrera');
+Route::post('delCarrera','App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@eliminarCarrera');

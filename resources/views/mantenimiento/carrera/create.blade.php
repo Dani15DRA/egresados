@@ -1,10 +1,10 @@
 @extends('adminlte::page')
-@section('title','Promocion')
+@section('title','Carrera')
 @section('content')
 <section class="content-header">
     <div class="container-fluid">
         <div class="row mb-auto">
-            <div class="col-sm-6"><h1>Promocion</h1></div>          
+            <div class="col-sm-6"><h1>Carrera</h1></div>          
         </div>
     </div>
 </section>
@@ -12,7 +12,7 @@
     <div class="container-fluid">          
         <div class="row">
             <div class="col-md-12">
-                {!! Form::open(['url' => 'mantenimiento/promocion', 'method' => 'POST', 'autocomplete' => 'off']) !!}
+                {!! Form::open(['url' => 'mantenimiento/carrera', 'method' => 'POST', 'autocomplete' => 'off']) !!}
                 {{ Form::token() }}
                 <div class="card card-primary card-outline">
                     <div class="card-header"><h3 class="card-title"> Nuevo</h3></div>                   
@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
-                        <a href="{{ URL::action('App\Http\Controllers\Admin\mantenimiento\PromocionAdminController@index') }}"><button type="button" class="btn btn-primary btn-sm">Cancelar</button></a>
+                        <a href="{{ URL::action('App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@index') }}"><button type="button" class="btn btn-primary btn-sm">Cancelar</button></a>
                     </div>                        
                 </div>
                 {!! Form::close() !!}
