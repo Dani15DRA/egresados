@@ -7,6 +7,7 @@ use App\Http\Controllers\Usuario\DireccionUserController;
 use App\Http\Controllers\Usuario\ContactoUserController;
 use App\Http\Controllers\Usuario\InfoAcademicaUserController;
 use App\Http\Controllers\Usuario\ExperienciaLaboralUserController;
+use App\Http\Controllers\Admin\PromocionAdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,5 @@ Route::middleware([
 });
 
 Route::resource('mantenimiento/promocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController');
+Route::get('getPromocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController@listarPromocion');
+Route::post('delPromocion','App\Http\Controllers\Admin\mantenimiento\PromocionAdminController@eliminarPromocion');
