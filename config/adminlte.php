@@ -321,7 +321,7 @@ return [
         
         [
             'text' => 'Egresado',
-            'icon' => 'fas fa-fw fa-share',
+            'icon' => 'fas fa-user-graduate',
             'submenu' => [
                 [
                     'text' => 'Información personal',
@@ -363,21 +363,23 @@ return [
         ],
 
 
-        ['header' => 'labels'],
         [
-            'text' => 'important',
-            'icon_color' => 'red',
-            'url' => '#',
-        ],
-        [
-            'text' => 'warning',
-            'icon_color' => 'yellow',
-            'url' => '#',
-        ],
-        [
-            'text' => 'information',
-            'icon_color' => 'cyan',
-            'url' => '#',
+            'text' => 'Mantenimiento',
+            'icon' => 'fas fa-cog',
+            'submenu' => [
+                [
+                    'text' => 'Promociones',
+                    'url' => 'mantenimiento/promocion',
+                    'icon' => 'fas fa-file',
+                ],
+                [
+                    'text' => 'Carreras',
+                    'url' => 'mantenimiento/carrera',
+                    'icon' => 'fas fa-file',
+                    
+                ],
+                
+            ],
         ],
     ],
 
