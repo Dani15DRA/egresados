@@ -33,7 +33,7 @@ class PromocionAdminController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'txtDescripcion' => 'required|max:120',
+            'txtDescripcion1' => 'required|max:120',
         ]);
 
         // Obtener el último ID y sumar uno
@@ -43,7 +43,7 @@ class PromocionAdminController extends Controller
         // Crear una nueva promoción
         $promocion = new Promocion();
         $promocion->PRO_ID = $newId;
-        $promocion->PRO_NOMBRE = $request->input('txtDescripcion');
+        $promocion->PRO_NOMBRE = $request->input('txtDescripcion1');
         $promocion->PRO_ESTADO = 1; // Establecer el estado como activo
         $promocion->PRO_FECHA = now(); // Establecer la fecha actual
 
