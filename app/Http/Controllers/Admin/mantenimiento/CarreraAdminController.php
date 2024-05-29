@@ -61,7 +61,7 @@ class CarreraAdminController extends Controller
     public function edit(string $id)
     {
         $carrera = Carrera::findOrFail($id);
-        return view('mantenimiento.carrera.edit', compact('carrera'));
+        return response()->json(['car' => $carrera]);
     }
 
 
@@ -76,7 +76,7 @@ class CarreraAdminController extends Controller
         $carrera->CAR_ESTADO = $request->input('CAR_ESTADO');
         $carrera->update();
 
-        return Redirect::to('mantenimiento/carrera')->with('success', 'Promoción actualizada con éxito');
+        return response()->json(['success' => 'Carrera actualizada con éxito']);
     }
 
     /**
@@ -106,17 +106,12 @@ class CarreraAdminController extends Controller
                 })
                 ->addColumn('Actions', function($data) {
                     return '
-                    <a href="'.url('/').'/mantenimiento/carrera/'.$data->CAR_ID.'/edit">
-                        <button class="btn btn-info btn-sm">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                    </a>
-                    
-                    <a data-target="#modal-delete" data-toggle="modal">
-                        <button class="btn btn-danger btn-sm deleteCarrera" data-id="'.$data->CAR_ID.'">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </a>';
+                    <button class="btn btn-info btn-sm editCarrera" data-id="' . $data->CAR_ID . '">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm deleteCarrera" data-id="' . $data->CAR_ID . '">
+                        <i class="fa fa-trash"></i>
+                    </button>';
                 })
             ->rawColumns(['CAR_ESTADO','Actions'])
             ->make(true);

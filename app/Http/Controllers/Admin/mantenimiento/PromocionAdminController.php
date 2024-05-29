@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\mantenimiento;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Promocion;
+use App\Models\Carrera;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use DataTables;
@@ -26,7 +27,6 @@ class PromocionAdminController extends Controller
     
     public function create()
     {
-        return view('mantenimiento.promocion.create');
     }
 
     
@@ -60,26 +60,49 @@ class PromocionAdminController extends Controller
 
     
     public function edit(string $id)
-    {
-        $promocion = Promocion::findOrFail($id);
-        return view('mantenimiento.promocion.edit', compact('promocion'));
-    }
+{
+    $promocion = Promocion::findOrFail($id);
+    $carreras = Carrera::where('CAR_ESTADO', 1)->get(); // Obtén todas las carreras activas
+
+    // Obtener las carreras asignadas a la promoción
+    $carrerasAsignadas = DB::table('PROM_CARRERAS')->where('PRO_ID', $id)->pluck('CAR_ID')->toArray();
+
+    return response()->json(['pro' => $promocion, 'carreras' => $carreras, 'carrerasAsignadas' => $carrerasAsignadas]);
+}
 
 
-    public function update(Request $request, string $id)
-    {
-        $request->validate([
-            'txtDescripcion' => 'required|max:120',
+public function update(Request $request, string $id)
+{
+    $request->validate([
+        'txtDescripcion' => 'required|max:120',
+    ]);
+
+    $promocion = Promocion::findOrFail($id);
+    $promocion->PRO_NOMBRE = $request->input('txtDescripcion');
+    $promocion->PRO_ESTADO = $request->input('PRO_ESTADO');
+    $promocion->update();
+
+    // Actualizar las carreras asociadas
+    $carreras = $request->input('carreras', []);
+    DB::table('PROM_CARRERAS')->where('PRO_ID', $id)->delete();
+    foreach ($carreras as $carreraId) {
+        DB::table('PROM_CARRERAS')->insert([
+            'PRO_ID' => $id,
+            'CAR_ID' => $carreraId
         ]);
-
-        $promocion = Promocion::findOrFail($id);
-        $promocion->PRO_NOMBRE = $request->input('txtDescripcion');
-        $promocion->PRO_ESTADO = $request->input('PRO_ESTADO');
-        $promocion->update();
-
-        return Redirect::to('mantenimiento/promocion')->with('success', 'Promoción actualizada con éxito');
     }
 
+    return response()->json(['success' => 'Promoción actualizada con éxito']);
+}
+
+public function up()
+{
+    Schema::create('PROM_CARRERAS', function (Blueprint $table) {
+        $table->integer('PRO_ID');
+        $table->integer('CAR_ID');
+        $table->primary(['PRO_ID', 'CAR_ID']);
+    });
+}
 
     /**
      * Remove the specified resource from storage.
@@ -90,40 +113,36 @@ class PromocionAdminController extends Controller
     }
 
     public function listarPromocion(Request $request)
-    {
-        $input = \Arr::except($request->all(),array('_token', '_method'));
-            
-        if ($request)
-        {
-            $searchText = Str::upper($input['searchText']);
+{
+    $input = \Arr::except($request->all(), array('_token', '_method'));
 
-            $data=DB::table('PROMOCION as pro')
-                ->select('pro.PRO_ID','pro.PRO_NOMBRE','pro.PRO_ESTADO')
-                ->where('pro.PRO_NOMBRE', 'like', '%'.$searchText.'%')
-                ->get();
-                
-            return Datatables::of($data)
-                ->addColumn('PRO_ESTADO', function($data) {
-                    return $data->PRO_ESTADO=='1'?'<span class="badge bg-success">ACTIVO</span>':'<span class="badge bg-danger">INACTIVO</span>';
-                })
-                ->addColumn('Actions', function($data) {
-                    return '
-                    <a href="'.url('/').'/mantenimiento/promocion/'.$data->PRO_ID.'/edit">
-                        <button class="btn btn-info btn-sm">
-                            <i class="fa fa-edit"></i>
-                        </button>
-                    </a>
-                    
-                    <a data-target="#modal-delete" data-toggle="modal">
-                        <button class="btn btn-danger btn-sm deletePromocion" data-id="'.$data->PRO_ID.'">
-                            <i class="fa fa-trash"></i>
-                        </button>
-                    </a>';
-                })
-            ->rawColumns(['PRO_ESTADO','Actions'])
+    if ($request)
+    {
+        $searchText = Str::upper($input['searchText']);
+
+        $data = DB::table('PROMOCION as pro')
+            ->select('pro.PRO_ID', 'pro.PRO_NOMBRE', 'pro.PRO_ESTADO')
+            ->where('pro.PRO_NOMBRE', 'like', '%' . $searchText . '%')
+            ->get();
+
+        return Datatables::of($data)
+            ->addColumn('PRO_ESTADO', function($data) {
+                return $data->PRO_ESTADO == '1' ? '<span class="badge bg-success">ACTIVO</span>' : '<span class="badge bg-danger">INACTIVO</span>';
+            })
+            ->addColumn('Actions', function($data) {
+                return '
+                    <button class="btn btn-info btn-sm editPromocion" data-id="' . $data->PRO_ID . '">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm deletePromocion" data-id="' . $data->PRO_ID . '">
+                        <i class="fa fa-trash"></i>
+                    </button>';
+            })
+            ->rawColumns(['PRO_ESTADO', 'Actions'])
             ->make(true);
-        }
     }
+}
+
 
     public function eliminarPromocion(Request $request)
     {

@@ -299,8 +299,6 @@
                 <div class="form-group">
                             <select id="promocion" name="promocion" class="form-control" required>
                                 <option selected disabled>Seleccione promoción</option>
-                                <option>Promoción XXI</option>
-                                <option>Promoción XX</option>
                             </select>
                     <div class="invalid-feedback">
                         Por favor seleccione una promoción.
@@ -311,8 +309,7 @@
                 <div class="form-group">
                             <select id="carrera" name="carrera" class="form-control" required>
                                 <option selected disabled>Seleccione carrera</option>
-                                <option>Mecatrónica Industrial</option>
-                                <option>Administración Industrial</option>
+
                             </select>
                         <div class="invalid-feedback">
                             Por favor seleccione una carrera.
@@ -494,6 +491,43 @@
         document.getElementById('paso-registro-2').style.display = 'block';
     }
 });
+
+$(document).ready(function() {
+    // Llamada AJAX para obtener datos
+    $.ajax({
+        url: "{{ url('obtener-datos') }}",
+        type: "GET",
+        success: function(response) {
+            // Llenar el selector de promociones
+            var promociones = response.promociones;
+            $.each(promociones, function(key, value) {
+                $('#promocion').append('<option value="' + key + '">' + value + '</option>');
+            });
+
+            // Llenar el selector de carreras
+            var carreras = response.carreras;
+            $.each(carreras, function(key, value) {
+                $('#carrera').append('<option value="' + key + '">' + value + '</option>');
+            });
+
+            // Inicializar Select2
+            $('#promocion, #carrera').select2({
+                theme: 'bootstrap4',
+                placeholder: 'Seleccione',
+                allowClear: true
+            });
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+        }
+    });
+
+    // Botón para el siguiente paso
+    $('#siguientePaso').click(function() {
+        // Aquí puedes agregar lógica para pasar al siguiente paso del registro
+    });
+});
+
 </script>
 
 

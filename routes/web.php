@@ -48,3 +48,7 @@ Route::post('delPromocion','App\Http\Controllers\Admin\mantenimiento\PromocionAd
 Route::resource('mantenimiento/carrera','App\Http\Controllers\Admin\mantenimiento\CarreraAdminController');
 Route::get('getCarrera','App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@listarCarrera');
 Route::post('delCarrera','App\Http\Controllers\Admin\mantenimiento\CarreraAdminController@eliminarCarrera');
+
+Route::get('obtener-datos', 'App\Http\Controllers\Admin\mantenimiento\Prom_carreraAdminController@obtenerDatos');
+
+
